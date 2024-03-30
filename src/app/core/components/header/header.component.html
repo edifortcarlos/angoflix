@@ -1,0 +1,28 @@
+<header
+  class="h-[60px] z-10 bg-gray-900 stiky top-0 flex items-center justify-between px-10"
+>
+  <!-- Logo + Navitems -->
+  <div class="flex gap-5">
+    <img width="110" src="/assets/img/angoflix-logo.png" alt="AngoFlix Logo" />
+    <ul class="flex items-center" *ngFor="let item of navList">
+      <li
+        class="text-neutral-200 cursor-pointer text-sm font-extralight hover:text-gray-400 transition-[1s]"
+      >
+        {{ item }}
+      </li>
+    </ul>
+  </div>
+  <!-- User + SignOut Button-->
+  <div class="text-white flex items-center gap-3">
+    <div class="flex items-center gap-2">
+      <a href=""
+        ><span
+          >Wellcome <strong>{{ user!.name }}</strong></span
+        ></a
+      >
+      <img [src]="user!.picture" alt="User Picture" width="42" class="rounded-3xl" />
+    </div>
+    &nbsp; | &nbsp;
+    <a href="" (click)="signOut()">Signout</a>
+  </div>
+</header>
