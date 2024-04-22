@@ -17,10 +17,10 @@
     <div class="flex items-center gap-2">
       <a href=""
         ><span
-          >Wellcome <strong>{{ user!.name }}</strong></span
-        ></a
-      >
-      <img [src]="user!.picture" alt="User Picture" width="42" class="rounded-3xl" />
+          >Wellcome <strong>{{ user?.name }}</strong></span
+        >
+      </a>
+      <img [src]="user?.picture" alt="User Picture" width="42" class="rounded-3xl" />
     </div>
     &nbsp; | &nbsp;
     <a href="" (click)="signOut()">Signout</a>

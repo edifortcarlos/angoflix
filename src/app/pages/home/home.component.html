@@ -1,2 +1,8 @@
 <app-header [user]="user" (onLogout)="signOut()" />
-<app-banner />
+<app-banner [title]="(bannerDetail$ | async)?.original_title" [overview]="(bannerDetail$ | async)?.overview" [key]="(bannerVideo$ | async)?.results[0].key" />
+<app-movie-carrossel [videoContents]="movies" [title]="'Popular on AngoFlix'"/>
+<app-movie-carrossel [videoContents]="tvShows" [title]="'Trending TV Shows'"/>
+<app-movie-carrossel [videoContents]="popularMovies" [title]="'Popular Movies'"/>
+<app-movie-carrossel [videoContents]="topRatedMovies" [title]="'Top Rated Movies'"/>
+<app-movie-carrossel [videoContents]="upComingMovies" [title]="'Up Coming Movies'"/>
+<app-movie-carrossel [videoContents]="nowPlayingMovies" [title]="'Now Playing Movies'"/>

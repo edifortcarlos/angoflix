@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from '../../../shared/model/user.interface';
+import { User } from '../../../shared/models/user.interface';
 
 @Component({
   selector: 'app-header',

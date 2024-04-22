@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit{
     const payload = this.decodeToke(response.credential);
 
     // Store in Session
-    sessionStorage.setItem('loged-user', JSON.stringify(payload))
+    localStorage.setItem('loged-user', JSON.stringify(payload))
 
     // Navigate to homepage
     this.router.navigate(['home']);
