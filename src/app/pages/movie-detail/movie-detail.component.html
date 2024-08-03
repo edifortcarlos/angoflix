@@ -1,0 +1,22 @@
+<app-header [user]="authService.getUser()" (onLogout)="authService.signOut()" />
+<div class="video-container">
+    <div class="title">
+        <h2>
+            {{movieInfo?.title || movieInfo?.name}}
+        </h2>
+    </div>
+    <video width="820" height="640" #videoPlayer (click)="toggleVideo()">
+        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+            type="video/mp4">
+    </video>
+    <!-- <button (click)="toggleVideo()">
+        {{videoPlayer.paused ? 'Play' : 'Pause'}}
+    </button> -->
+    <div class="movie-info">
+        <div>{{movieInfo?.release_date}}</div>|
+        <div>{{movieInfo?.popularity}}</div>
+    </div>
+    <div class="m-overview">
+        {{movieInfo?.overview}}
+    </div>
+</div>

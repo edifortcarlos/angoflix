@@ -1,4 +1,4 @@
-<app-header [user]="user" (onLogout)="signOut()" />
+<app-header [user]="authService.getUser()" (onLogout)="authService.signOut()" />
 <app-banner [title]="(bannerDetail$ | async)?.original_title" [overview]="(bannerDetail$ | async)?.overview" [key]="(bannerVideo$ | async)?.results[0].key" />
 <app-movie-carrossel [videoContents]="movies" [title]="'Popular on AngoFlix'"/>
 <app-movie-carrossel [videoContents]="tvShows" [title]="'Trending TV Shows'"/>

@@ -13,11 +13,11 @@ export class BannerComponent implements OnChanges {
   @Input() overview: string = '';
   @Input() key: string = '';
   private sanitizer = inject(DomSanitizer)
-  videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://youtube.com/embed/${this.key}?autoplay=1&mute=1&loop=1&controls=0`);
+  videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://youtube.com/embed/${this.key}?autoplay=1&mute=1&loop=1&controls=0&playlist=${this.key}`);
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['key']){
-      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://youtube.com/embed/${this.key}?autoplay=1&mute=1&loop=1&controls=0`);
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://youtube.com/embed/${this.key}?autoplay=1&mute=1&loop=1&controls=0&playlist=${this.key}`);
     }
     
   }

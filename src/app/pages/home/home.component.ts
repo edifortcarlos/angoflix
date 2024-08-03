@@ -7,7 +7,6 @@ import { User } from '../../shared/models/user.interface';
 import { AuthService } from '../../shared/services/auth.service';
 import { MovieService } from '../../shared/services/movie.service';
 import { IVideoContent } from '../../shared/models/video-content.interface';
-import { DescriptionPipe } from '../../shared/pipes/description.pipe';
 import { Observable, forkJoin, map } from 'rxjs';
 
 @Component({
@@ -36,7 +35,11 @@ export class HomeComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) private document: Document) {
     this.storage = document.defaultView?.localStorage;
- 
+    this.user = {
+      name: '',
+      email: '',
+      picture: ''
+    }
     
   }
 
@@ -51,20 +54,10 @@ export class HomeComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    if(this.storage){
-      const localUser = JSON.parse(this.storage.getItem('loged-user')!) as User | null;
-      if(localUser){
-        this.user = {
-          name: localUser.name,
-          picture: localUser.picture,
-          email: localUser.email
-        }
-      }
-    }
 
     forkJoin(this.sources).pipe(
       map(([movies, tvShows, /*ratedMovies,*/ nowPlayingMovies, upComingMovies, popularMovies, topRated]) => {
-        this.bannerDetail$ = this.movieService.getBannerDetail((movies as any).results[0].id);
+        this.bannerDetail$ = this.movieService.getMovieDetail((movies as any).results[0].id);
         this.bannerVideo$ = this.movieService.getBannerVideo((movies as any).results[0].id);
 
         return {movies, tvShows, /*ratedMovies,*/ nowPlayingMovies, upComingMovies, popularMovies, topRated}
@@ -77,12 +70,8 @@ export class HomeComponent implements OnInit {
       this.upComingMovies = res.upComingMovies.results as IVideoContent[];
       this.popularMovies = res.popularMovies.results as IVideoContent[];
       this.topRatedMovies = res.topRated.results as IVideoContent[];
+      console.log(this.movies)
     })
-  }
-
-
-  signOut(){
-    this.authService.signOut();
   }
 
 }

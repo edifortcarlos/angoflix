@@ -1,0 +1,30 @@
+.video-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.title {
+    color: darkgray;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.m-overview {
+    margin-top: 40px;
+    width: 60%;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+video {
+    width: 60%;
+    height: auto;
+}
